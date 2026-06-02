@@ -49,8 +49,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const BOOKING_URL =
-  "https://www.booking.com/hotel/pl/domek-maly-las.pl.html?activeTab=main&chal_t=1780320107573&force_referer=";
+const BOOKING_URL = "https://www.booking.com/hotel/pl/domek-maly-las.pl.html";
 
 const GALLERY = [
   "https://res.cloudinary.com/davhhstdw/image/upload/v1780320064/IMG_1764_evmc4h.jpg",
