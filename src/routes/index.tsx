@@ -343,13 +343,6 @@ function Gallery() {
     };
   }, [open]);
 
-  const tabs: { id: Filter; label: string }[] = [
-    { id: "all", label: "Wszystkie" },
-    { id: "ext", label: "Zewnętrze" },
-    { id: "int", label: "Wnętrze" },
-    { id: "area", label: "Okolica" },
-  ];
-
   return (
     <section id="galeria" ref={ref} className="py-32 bg-background">
       <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
@@ -359,21 +352,6 @@ function Gallery() {
         <h2 className="reveal font-serif text-5xl md:text-6xl text-cream font-light">
           Spojrzenie do środka
         </h2>
-        <div className="reveal mt-10 flex flex-wrap justify-center gap-2">
-          {tabs.map((t) => (
-            <button
-              key={t.id}
-              onClick={() => setFilter(t.id)}
-              className={`px-5 py-2 text-xs tracking-[0.22em] uppercase border transition-all ${
-                filter === t.id
-                  ? "border-amber text-background bg-amber"
-                  : "border-amber/30 text-cream/70 hover:border-amber hover:text-amber"
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
       </div>
 
       <div className="px-4 md:px-8">
