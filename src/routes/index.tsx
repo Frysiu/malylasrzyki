@@ -49,8 +49,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const BOOKING_URL =
-  "https://www.booking.com/hotel/pl/domek-maly-las.pl.html?activeTab=main&chal_t=1780320107573&force_referer=";
+const BOOKING_URL = "https://www.booking.com/hotel/pl/domek-maly-las.pl.html";
 
 const GALLERY = [
   "https://res.cloudinary.com/davhhstdw/image/upload/v1780320064/IMG_1764_evmc4h.jpg",
@@ -87,11 +86,6 @@ const GALLERY = [
   "https://res.cloudinary.com/davhhstdw/image/upload/v1780320056/IMG_1708_t4ykig.jpg",
 ];
 
-// crude category split for filters
-const CATS: Record<number, "ext" | "int" | "area"> = {};
-GALLERY.forEach((_, i) => {
-  CATS[i] = i % 3 === 0 ? "ext" : i % 3 === 1 ? "int" : "area";
-});
 
 const FEATURES = [
   { label: "Prywatny las", icon: "🌲" },
@@ -187,7 +181,7 @@ function Hero() {
         className="absolute inset-0 opacity-30"
         style={{
           backgroundImage:
-            "url('https://res.cloudinary.com/davhhstdw/image/upload/v1780320064/IMG_1764_evmc4h.jpg')",
+            "url('https://res.cloudinary.com/davhhstdw/image/upload/v1780320056/IMG_1704_vdc8xf.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           filter: "brightness(0.35) saturate(0.7)",
@@ -322,16 +316,11 @@ function About() {
   );
 }
 
-type Filter = "all" | "ext" | "int" | "area";
-
 function Gallery() {
-  const [filter, setFilter] = useState<Filter>("all");
   const [open, setOpen] = useState<number | null>(null);
   const ref = useReveal<HTMLDivElement>();
 
-  const items = GALLERY.map((src, i) => ({ src, i, cat: CATS[i] })).filter(
-    (it) => filter === "all" || it.cat === filter,
-  );
+  const items = GALLERY.map((src, i) => ({ src, i }));
 
   useEffect(() => {
     if (open === null) return;
@@ -349,13 +338,6 @@ function Gallery() {
     };
   }, [open]);
 
-  const tabs: { id: Filter; label: string }[] = [
-    { id: "all", label: "Wszystkie" },
-    { id: "ext", label: "Zewnętrze" },
-    { id: "int", label: "Wnętrze" },
-    { id: "area", label: "Okolica" },
-  ];
-
   return (
     <section id="galeria" ref={ref} className="py-32 bg-background">
       <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
@@ -365,21 +347,6 @@ function Gallery() {
         <h2 className="reveal font-serif text-5xl md:text-6xl text-cream font-light">
           Spojrzenie do środka
         </h2>
-        <div className="reveal mt-10 flex flex-wrap justify-center gap-2">
-          {tabs.map((t) => (
-            <button
-              key={t.id}
-              onClick={() => setFilter(t.id)}
-              className={`px-5 py-2 text-xs tracking-[0.22em] uppercase border transition-all ${
-                filter === t.id
-                  ? "border-amber text-background bg-amber"
-                  : "border-amber/30 text-cream/70 hover:border-amber hover:text-amber"
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
       </div>
 
       <div className="px-4 md:px-8">
@@ -545,23 +512,13 @@ function Booking() {
               Telefon
             </p>
             <a
-              href="tel:+48000000000"
+              href="tel:+48780605222"
               className="font-serif text-4xl md:text-5xl text-cream block hover:text-amber transition-colors"
             >
-              +48 000 000 000
+              +48 780 605 222
             </a>
 
-            <p className="text-cream/60 text-xs tracking-[0.3em] uppercase mt-10 mb-4">
-              E-mail
-            </p>
-            <a
-              href="mailto:kontakt@malylas.pl"
-              className="font-serif text-2xl md:text-3xl text-cream italic hover:text-amber transition-colors"
-            >
-              kontakt@malylas.pl
-            </a>
-
-            <div className="flex gap-3 mt-12">
+            <div className="flex gap-3 mt-12 flex-wrap">
               <a
                 href="https://facebook.com"
                 target="_blank"
@@ -569,14 +526,6 @@ function Booking() {
                 className="amber-glow border border-amber/40 text-amber px-6 py-3 text-xs tracking-[0.22em] uppercase hover:bg-amber hover:text-background transition-all"
               >
                 Facebook
-              </a>
-              <a
-                href="https://wa.me/48000000000"
-                target="_blank"
-                rel="noreferrer"
-                className="amber-glow border border-amber/40 text-amber px-6 py-3 text-xs tracking-[0.22em] uppercase hover:bg-amber hover:text-background transition-all"
-              >
-                WhatsApp
               </a>
               <a
                 href={BOOKING_URL}
