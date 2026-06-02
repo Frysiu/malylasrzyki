@@ -86,11 +86,6 @@ const GALLERY = [
   "https://res.cloudinary.com/davhhstdw/image/upload/v1780320056/IMG_1708_t4ykig.jpg",
 ];
 
-// crude category split for filters
-const CATS: Record<number, "ext" | "int" | "area"> = {};
-GALLERY.forEach((_, i) => {
-  CATS[i] = i % 3 === 0 ? "ext" : i % 3 === 1 ? "int" : "area";
-});
 
 const FEATURES = [
   { label: "Prywatny las", icon: "🌲" },
