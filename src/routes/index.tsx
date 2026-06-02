@@ -512,23 +512,13 @@ function Booking() {
               Telefon
             </p>
             <a
-              href="tel:+48000000000"
+              href="tel:+48780605222"
               className="font-serif text-4xl md:text-5xl text-cream block hover:text-amber transition-colors"
             >
-              +48 000 000 000
+              +48 780 605 222
             </a>
 
-            <p className="text-cream/60 text-xs tracking-[0.3em] uppercase mt-10 mb-4">
-              E-mail
-            </p>
-            <a
-              href="mailto:kontakt@malylas.pl"
-              className="font-serif text-2xl md:text-3xl text-cream italic hover:text-amber transition-colors"
-            >
-              kontakt@malylas.pl
-            </a>
-
-            <div className="flex gap-3 mt-12">
+            <div className="flex gap-3 mt-12 flex-wrap">
               <a
                 href="https://facebook.com"
                 target="_blank"
@@ -536,14 +526,6 @@ function Booking() {
                 className="amber-glow border border-amber/40 text-amber px-6 py-3 text-xs tracking-[0.22em] uppercase hover:bg-amber hover:text-background transition-all"
               >
                 Facebook
-              </a>
-              <a
-                href="https://wa.me/48000000000"
-                target="_blank"
-                rel="noreferrer"
-                className="amber-glow border border-amber/40 text-amber px-6 py-3 text-xs tracking-[0.22em] uppercase hover:bg-amber hover:text-background transition-all"
-              >
-                WhatsApp
               </a>
               <a
                 href={BOOKING_URL}
