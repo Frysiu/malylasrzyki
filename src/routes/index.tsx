@@ -186,7 +186,7 @@ function Hero() {
         className="absolute inset-0 opacity-30"
         style={{
           backgroundImage:
-            "url('https://res.cloudinary.com/davhhstdw/image/upload/v1780320064/IMG_1764_evmc4h.jpg')",
+            "url('https://res.cloudinary.com/davhhstdw/image/upload/v1780320056/IMG_1704_vdc8xf.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           filter: "brightness(0.35) saturate(0.7)",
