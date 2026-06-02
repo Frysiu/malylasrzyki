@@ -321,16 +321,11 @@ function About() {
   );
 }
 
-type Filter = "all" | "ext" | "int" | "area";
-
 function Gallery() {
-  const [filter, setFilter] = useState<Filter>("all");
   const [open, setOpen] = useState<number | null>(null);
   const ref = useReveal<HTMLDivElement>();
 
-  const items = GALLERY.map((src, i) => ({ src, i, cat: CATS[i] })).filter(
-    (it) => filter === "all" || it.cat === filter,
-  );
+  const items = GALLERY.map((src, i) => ({ src, i }));
 
   useEffect(() => {
     if (open === null) return;
