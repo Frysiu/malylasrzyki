@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState } from "react";
 import { Nav, Footer, useReveal } from "@/components/layout";
 import {
   BOOKING_URL,
@@ -7,6 +7,10 @@ import {
   FEATURES,
   PHONE,
   PHONE_HREF,
+  EMAIL,
+  EMAIL_HREF,
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
   GALLERY,
 } from "@/lib/site";
 
@@ -17,7 +21,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Nowoczesny domek w stylu skandynawskim w Rzykach, Beskid Mały. Prywatny leśny azyl dla 6 osób z tarasem, pokojem kinowym i miejscem na ognisko.",
+          "Nowoczesny domek w stylu skandynawskim w Rzykach, Beskid Mały. Prywatny leśny azyl dla 6 osób z tarasem, pokojem kinowym i jacuzzi opalanym drewnem.",
       },
       { property: "og:title", content: "Mały Las w Rzykach – Domek w Beskidzie Małym" },
       {
@@ -64,7 +68,7 @@ function Index() {
       <Nav />
       <Hero />
       <About />
-      <Booking />
+      <Contact />
       <Footer />
     </div>
   );
@@ -139,6 +143,21 @@ function Hero() {
 
 function About() {
   const ref = useReveal<HTMLDivElement>();
+  const [active, setActive] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (active === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActive(null);
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [active]);
+
   return (
     <section
       id="o-miejscu"
@@ -171,9 +190,11 @@ function About() {
 
         <div className="grid sm:grid-cols-2 gap-4">
           {FEATURES.map((f, i) => (
-            <div
+            <button
+              type="button"
               key={f.label}
-              className="reveal border border-amber/25 bg-wood-dark/50 p-7 hover:border-amber transition-all duration-500 group"
+              onClick={() => setActive(i)}
+              className="reveal text-left border border-amber/25 bg-wood-dark/50 p-7 hover:border-amber transition-all duration-500 group cursor-pointer"
               style={{ animationDelay: `${0.1 + i * 0.08}s` }}
             >
               <div className="text-3xl mb-4 text-amber/90 group-hover:scale-110 transition-transform">
@@ -182,22 +203,45 @@ function About() {
               <p className="font-serif text-xl text-cream tracking-wide">
                 {f.label}
               </p>
-            </div>
+            </button>
           ))}
         </div>
       </div>
+
+      {active !== null && (
+        <div
+          className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-10"
+          onClick={() => setActive(null)}
+        >
+          <button
+            type="button"
+            aria-label="Zamknij"
+            onClick={() => setActive(null)}
+            className="absolute top-5 right-5 text-cream/80 hover:text-amber text-3xl leading-none w-12 h-12 flex items-center justify-center"
+          >
+            ×
+          </button>
+          <figure
+            className="max-w-5xl w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={FEATURES[active].image}
+              alt={FEATURES[active].label}
+              className="w-full max-h-[80vh] object-contain border border-amber/20"
+            />
+            <figcaption className="text-center mt-4 font-serif text-2xl text-cream italic">
+              {FEATURES[active].icon} {FEATURES[active].label}
+            </figcaption>
+          </figure>
+        </div>
+      )}
     </section>
   );
 }
 
-function Booking() {
+function Contact() {
   const ref = useReveal<HTMLDivElement>();
-  const [sent, setSent] = useState(false);
-
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSent(true);
-  };
 
   return (
     <section
@@ -209,100 +253,72 @@ function Booking() {
           "radial-gradient(ellipse at top, #1a1108 0%, #0c0905 60%, #050302 100%)",
       }}
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <p className="reveal text-amber tracking-[0.35em] text-xs uppercase mb-6">
-            Rezerwacja
-          </p>
-          <h2 className="reveal font-serif text-5xl md:text-7xl text-cream font-light leading-[1]">
-            Zarezerwuj swój pobyt
-          </h2>
-        </div>
+      <div className="max-w-5xl mx-auto text-center">
+        <p className="reveal text-amber tracking-[0.35em] text-xs uppercase mb-6">
+          Rezerwacja
+        </p>
+        <h2 className="reveal font-serif text-5xl md:text-7xl text-cream font-light leading-[1]">
+          Zarezerwuj swój pobyt
+        </h2>
+        <p
+          className="reveal mt-8 text-cream/70 text-lg max-w-2xl mx-auto"
+          style={{ animationDelay: "0.1s" }}
+        >
+          Skontaktuj się bezpośrednio lub zarezerwuj przez Booking.com.
+        </p>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div className="reveal">
-            <p className="text-cream/60 text-xs tracking-[0.3em] uppercase mb-4">
+        <div className="reveal mt-16 grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto text-left">
+          <div>
+            <p className="text-cream/60 text-xs tracking-[0.3em] uppercase mb-3">
               Telefon
             </p>
             <a
               href={PHONE_HREF}
-              className="font-serif text-4xl md:text-5xl text-cream block hover:text-amber transition-colors"
+              className="font-serif text-3xl md:text-4xl text-cream block hover:text-amber transition-colors"
             >
               {PHONE}
             </a>
-
-            <div className="flex gap-3 mt-12 flex-wrap">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                className="amber-glow border border-amber/40 text-amber px-6 py-3 text-xs tracking-[0.22em] uppercase hover:bg-amber hover:text-background transition-all"
-              >
-                Facebook
-              </a>
-              <a
-                href={BOOKING_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="amber-glow border border-amber/40 text-amber px-6 py-3 text-xs tracking-[0.22em] uppercase hover:bg-amber hover:text-background transition-all"
-              >
-                Booking
-              </a>
-            </div>
           </div>
-
-          <form
-            onSubmit={onSubmit}
-            className="reveal space-y-5 border border-amber/20 bg-wood-dark/40 p-8 md:p-10"
-          >
-            <Field label="Imię i nazwisko" name="name" />
-            <Field label="Telefon" name="phone" type="tel" />
-            <div className="grid grid-cols-2 gap-5">
-              <Field label="Data przyjazdu" name="from" type="date" />
-              <Field label="Data wyjazdu" name="to" type="date" />
-            </div>
-            <div>
-              <label className="block text-cream/60 text-[0.65rem] tracking-[0.3em] uppercase mb-2">
-                Wiadomość
-              </label>
-              <textarea
-                name="message"
-                rows={4}
-                className="w-full bg-transparent border border-amber/25 px-4 py-3 text-cream focus:border-amber outline-none transition-colors resize-none"
-              />
-            </div>
-            <button
-              type="submit"
-              className="amber-glow w-full bg-amber text-background py-4 text-xs tracking-[0.3em] uppercase hover:bg-amber/90 transition-colors"
+          <div>
+            <p className="text-cream/60 text-xs tracking-[0.3em] uppercase mb-3">
+              E-mail
+            </p>
+            <a
+              href={EMAIL_HREF}
+              className="font-serif text-2xl md:text-3xl text-cream block hover:text-amber transition-colors break-all"
             >
-              {sent ? "Dziękujemy — odezwiemy się" : "Wyślij zapytanie"}
-            </button>
-          </form>
+              {EMAIL}
+            </a>
+          </div>
+        </div>
+
+        <div className="reveal flex flex-wrap justify-center gap-3 mt-14">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="amber-glow bg-amber text-background px-8 py-4 text-xs tracking-[0.3em] uppercase hover:bg-amber/90 transition-colors"
+          >
+            Rezerwuj na Booking
+          </a>
+          <a
+            href={FACEBOOK_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="border border-amber/40 text-amber px-6 py-4 text-xs tracking-[0.22em] uppercase hover:bg-amber hover:text-background transition-all"
+          >
+            Facebook
+          </a>
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="border border-amber/40 text-amber px-6 py-4 text-xs tracking-[0.22em] uppercase hover:bg-amber hover:text-background transition-all"
+          >
+            Instagram
+          </a>
         </div>
       </div>
     </section>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-}: {
-  label: string;
-  name: string;
-  type?: string;
-}) {
-  return (
-    <div>
-      <label className="block text-cream/60 text-[0.65rem] tracking-[0.3em] uppercase mb-2">
-        {label}
-      </label>
-      <input
-        type={type}
-        name={name}
-        className="w-full bg-transparent border border-amber/25 px-4 py-3 text-cream focus:border-amber outline-none transition-colors [color-scheme:dark]"
-      />
-    </div>
   );
 }
