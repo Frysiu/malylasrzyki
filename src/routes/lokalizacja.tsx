@@ -48,7 +48,7 @@ function LokalizacjaPage() {
             <div className="reveal aspect-[4/3] border border-amber/25 overflow-hidden">
               <iframe
                 title="Mapa — Mały Las w Rzykach"
-                src="https://www.google.com/maps?q=Młoki+Górne+113,+Rzyki,+Polska&output=embed"
+                src="https://www.google.com/maps?q=Mały+Las+Domek+w+Rzykach,+Młoki+Górne+113,+Rzyki&output=embed"
                 className="w-full h-full grayscale contrast-125"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
