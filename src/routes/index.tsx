@@ -155,18 +155,17 @@ function About() {
             className="reveal font-serif italic text-3xl md:text-4xl lg:text-5xl text-cream leading-[1.2] font-light"
             style={{ animationDelay: "0.1s" }}
           >
-            „Ciemna drewniana bryła, panoramiczne okna i zapach lasu — Mały Las to
+            „Klimatyczny domek, panoramiczne okna i zapach lasu — Mały Las to
             miejsce, gdzie czas zwalnia."
           </blockquote>
           <p
             className="reveal mt-10 text-cream/70 leading-relaxed text-lg max-w-xl"
             style={{ animationDelay: "0.2s" }}
           >
-            Dramatyczna czarna bryła w kształcie litery A, otoczona wysokimi
-            świerkami. Wnętrze utrzymane w ciepłych tonach naturalnego drewna,
-            z pokojem kinowym, panoramicznym widokiem na las i tarasem
-            stworzonym do wieczorów przy ogniu. Miejsce dla tych, którzy
-            szukają ciszy i pełni natury.
+            Wnętrze utrzymane w ciepłych tonach naturalnego drewna, z pokojem
+            kinowym, panoramicznym widokiem na las i tarasem stworzonym do
+            wieczorów w jacuzzi. Miejsce dla tych, którzy szukają ciszy i pełni
+            natury.
           </p>
         </div>
 
