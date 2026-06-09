@@ -6,6 +6,11 @@ export const BOOKING_URL = "https://www.booking.com/hotel/pl/domek-maly-las.pl.h
 
 export const PHONE = "+48 780 605 222";
 export const PHONE_HREF = "tel:+48780605222";
+export const EMAIL = "domekmalylas@gmail.com";
+export const EMAIL_HREF = "mailto:domekmalylas@gmail.com";
+export const FACEBOOK_URL =
+  "https://www.facebook.com/people/Ma%C5%82y-Las-Domek-w-Rzykach/61590477640885/";
+export const INSTAGRAM_URL = "https://www.instagram.com/malylas_domek/";
 
 export const GALLERY = [
   "https://res.cloudinary.com/davhhstdw/image/upload/v1780320064/IMG_1764_evmc4h.jpg",
@@ -43,12 +48,42 @@ export const GALLERY = [
 ];
 
 export const FEATURES = [
-  { label: "Prywatny las", icon: "🌲" },
-  { label: "Beskid Mały", icon: "⛰" },
-  { label: "Miejsce na ognisko", icon: "🔥" },
-  { label: "Naturalne drewno", icon: "🪵" },
-  { label: "Pokój kinowy", icon: "🎬" },
-  { label: "Do 6 osób", icon: "👥" },
+  {
+    label: "Jacuzzi opalane drewnem",
+    icon: "♨",
+    image:
+      "https://res.cloudinary.com/davhhstdw/image/upload/v1780320056/IMG_1710_mmtjz5.jpg",
+  },
+  {
+    label: "Beskid Mały",
+    icon: "⛰",
+    image:
+      "https://res.cloudinary.com/davhhstdw/image/upload/v1780320056/IMG_1704_vdc8xf.jpg",
+  },
+  {
+    label: "Miejsce na ognisko",
+    icon: "🔥",
+    image:
+      "https://res.cloudinary.com/davhhstdw/image/upload/v1780320056/IMG_1708_t4ykig.jpg",
+  },
+  {
+    label: "Naturalne drewno",
+    icon: "🪵",
+    image:
+      "https://res.cloudinary.com/davhhstdw/image/upload/v1780320061/IMG_1729_tj4s0p.jpg",
+  },
+  {
+    label: "Pokój kinowy",
+    icon: "🎬",
+    image:
+      "https://res.cloudinary.com/davhhstdw/image/upload/v1780320064/IMG_1764_evmc4h.jpg",
+  },
+  {
+    label: "Do 6 osób",
+    icon: "👥",
+    image:
+      "https://res.cloudinary.com/davhhstdw/image/upload/v1780320063/IMG_1755_wtrdbn.jpg",
+  },
 ];
 
 export const DISTANCES = [

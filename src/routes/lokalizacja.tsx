@@ -36,9 +36,12 @@ function LokalizacjaPage() {
             <p className="reveal text-amber tracking-[0.35em] text-xs uppercase mb-6">
               Lokalizacja
             </p>
-            <h1 className="reveal font-serif text-5xl md:text-7xl text-cream font-light">
-              Młoki Górne 113, Rzyki
+            <h1 className="reveal font-serif text-5xl md:text-7xl text-cream font-light italic">
+              Mały Las
             </h1>
+            <p className="reveal text-cream/60 mt-4 tracking-[0.2em] uppercase text-xs">
+              Młoki Górne 113 · Rzyki
+            </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
