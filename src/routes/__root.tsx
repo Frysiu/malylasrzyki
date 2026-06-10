@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Mały Las - Domek w Rzykach" },
+      { name: "description", content: "Website for luxury cabin rental \"Mały Las w Rzykach\" in Beskid Mały, Poland." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Mały Las - Domek w Rzykach" },
+      { property: "og:description", content: "Website for luxury cabin rental \"Mały Las w Rzykach\" in Beskid Mały, Poland." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Mały Las - Domek w Rzykach" },
+      { name: "twitter:description", content: "Website for luxury cabin rental \"Mały Las w Rzykach\" in Beskid Mały, Poland." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bf27352b-6281-4d7c-a981-b05ac97afb54/id-preview-e3d4f0b9--f3341f9b-4978-43d2-b44c-7eebb5c9e2ab.lovable.app-1781104967820.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bf27352b-6281-4d7c-a981-b05ac97afb54/id-preview-e3d4f0b9--f3341f9b-4978-43d2-b44c-7eebb5c9e2ab.lovable.app-1781104967820.png" },
     ],
     links: [
       {
