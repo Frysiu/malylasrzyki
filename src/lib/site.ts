@@ -1,4 +1,5 @@
 import heroCabin from "@/assets/hero-cabin.png.asset.json";
+import beskidMaly from "@/assets/beskid-maly.jpg.asset.json";
 
 export const HERO_IMAGE = heroCabin.url;
 
@@ -60,8 +61,7 @@ export const FEATURES = [
   {
     label: "Beskid Mały",
     icon: "⛰",
-    image:
-      "https://res.cloudinary.com/davhhstdw/image/upload/v1780320060/IMG_1737_vfnuzz.jpg",
+    image: beskidMaly.url,
   },
   {
     label: "Miejsce na ognisko",
