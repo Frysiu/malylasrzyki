@@ -4,4 +4,7 @@ export default defineConfig({
   tanstackStart: {
     spa: { enabled: true },
   },
+  nitro: {
+    preset: "node-server",
+  },
 });
