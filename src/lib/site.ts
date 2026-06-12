@@ -1,7 +1,8 @@
-import heroCabin from "@/assets/hero-cabin.png.asset.json";
-import beskidMaly from "@/assets/beskid-maly.jpg.asset.json";
-
-export const HERO_IMAGE = heroCabin.url;
+export const HERO_IMAGE =
+  "https://res.cloudinary.com/davhhstdw/image/upload/v1780320061/IMG_1729_tj4s0p.jpg";
+const beskidMaly = {
+  url: "https://res.cloudinary.com/davhhstdw/image/upload/v1781209205/DJI_0032_-_frame_at_0m21s_pypcqj.jpg",
+};
 
 export const BOOKING_URL = "https://www.booking.com/hotel/pl/domek-maly-las.pl.html";
 
