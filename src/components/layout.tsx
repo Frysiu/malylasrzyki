@@ -30,6 +30,7 @@ export function Nav() {
   const links = [
     { to: "/", label: "Start" },
     { to: "/galeria", label: "Galeria" },
+    { to: "/cennik", label: "Cennik" },
     { to: "/lokalizacja", label: "Lokalizacja" },
   ] as const;
 

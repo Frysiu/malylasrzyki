@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LokalizacjaRouteImport } from './routes/lokalizacja'
 import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as CennikRouteImport } from './routes/cennik'
 import { Route as IndexRouteImport } from './routes/index'
 
 const LokalizacjaRoute = LokalizacjaRouteImport.update({
@@ -23,6 +24,11 @@ const GaleriaRoute = GaleriaRouteImport.update({
   path: '/galeria',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CennikRoute = CennikRouteImport.update({
+  id: '/cennik',
+  path: '/cennik',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,34 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cennik': typeof CennikRoute
   '/galeria': typeof GaleriaRoute
   '/lokalizacja': typeof LokalizacjaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cennik': typeof CennikRoute
   '/galeria': typeof GaleriaRoute
   '/lokalizacja': typeof LokalizacjaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cennik': typeof CennikRoute
   '/galeria': typeof GaleriaRoute
   '/lokalizacja': typeof LokalizacjaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/galeria' | '/lokalizacja'
+  fullPaths: '/' | '/cennik' | '/galeria' | '/lokalizacja'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/galeria' | '/lokalizacja'
-  id: '__root__' | '/' | '/galeria' | '/lokalizacja'
+  to: '/' | '/cennik' | '/galeria' | '/lokalizacja'
+  id: '__root__' | '/' | '/cennik' | '/galeria' | '/lokalizacja'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CennikRoute: typeof CennikRoute
   GaleriaRoute: typeof GaleriaRoute
   LokalizacjaRoute: typeof LokalizacjaRoute
 }
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GaleriaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cennik': {
+      id: '/cennik'
+      path: '/cennik'
+      fullPath: '/cennik'
+      preLoaderRoute: typeof CennikRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,19 +104,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CennikRoute: CennikRoute,
   GaleriaRoute: GaleriaRoute,
   LokalizacjaRoute: LokalizacjaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
